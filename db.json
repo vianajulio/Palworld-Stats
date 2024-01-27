@@ -3,7 +3,7 @@
         {
             "id": 1,
             "key": "001",
-            "image": "/public/images/001.png",
+            "image": "/src/pals_imgs/001.png",
             "name": "Lamball",
             "wiki": "https://palworld.fandom.com/wiki/Lamball",
             "types": [
