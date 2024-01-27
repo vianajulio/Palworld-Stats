@@ -1,0 +1,21 @@
+.body-container {
+    width: 90dvw;
+}
+
+.stats-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 48px 24px;
+}
+
+.flex {
+    display: flex;
+}
+
+.card-pal {
+    width: 240px;
+    background-color: beige;
+}

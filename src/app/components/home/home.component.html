@@ -1,0 +1,13 @@
+
+<section class="body-container ">
+    <h1>Pals Stats</h1>
+    <div class="stats-container">
+        <div *ngFor="let pal of palList" class="card-pal">
+            <p>{{pal.name}}</p>
+            <div *ngFor="let suitability of pal.suitability" class="flex">
+                <p>{{suitability.type}}</p>
+                <p>{{suitability.level}}</p>
+            </div>
+        </div>
+    </div>
+</section>
