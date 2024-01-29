@@ -1,13 +1,34 @@
-
 <section class="body-container ">
     <h1>Pals Stats</h1>
-    <div class="stats-container">
-        <div *ngFor="let pal of palList" class="card-pal">
-            <p>{{pal.name}}</p>
-            <div *ngFor="let suitability of pal.suitability" class="flex">
-                <p>{{suitability.type}}</p>
-                <p>{{suitability.level}}</p>
-            </div>
-        </div>
-    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Kindling</th>
+                <th>Planting</th>
+                <th>Handiwork</th>
+                <th>Lumbering</th>
+                <th>Medicine Production</th>
+                <th>Transporting</th>
+                <th>Watering </th>
+                <th>Generating Electricity</th>
+                <th>Gathering</th>
+                <th>Mining </th>
+                <th>Cooling </th>
+                <th>Farming</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pal of getOne()">
+                <td>
+                    <img [src]="pal.image" alt="">
+                </td>
+                <td>{{pal.name}}</td>
+                <td *ngFor="let suitability of pal.suitability">
+                    {{suitability.level}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>

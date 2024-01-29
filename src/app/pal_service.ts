@@ -11,36 +11,50 @@ export class PalService {
 
     async getAllPals(): Promise<Pal[]> {
         const data = await fetch(this.url);
+
+
+
         return await data.json() ?? []
     }
 
-    // async getAllPals(): Promise<Pal[]> {
-    //     const corsHeaders = new Headers({
-    //         'Origin': 'http://localhost:3000/pals', // Substitua pelo seu domínio Angular
-    //         'Access-Control-Allow-Origin': '*', // Pode ajustar conforme necessário
-    //     });
+    DefaultValue(pal: Pal) {
+        let initialKeys: {
+            type: string;
+            level: number;
+        }[] = [
+                { type: "kindling", level: 0 },
+                { type: "planting", level: 0 },
+                { type: "handiwork", level: 0 },
+                { type: "lumbering", level: 0 },
+                { type: "medicine", level: 0 },
+                { type: "transporting", level: 0 },
+                { type: "watering", level: 0 },
+                { type: "generating", level: 0 },
+                { type: "gathering", level: 0 },
+                { type: "mining", level: 0 },
+                { type: "cooling", level: 0 },
+                { type: "farming", level: 0 }];
 
-    //     const options: RequestInit = {
-    //         method: 'GET',
-    //         headers: corsHeaders,
-    //         mode: 'cors',
-    //         cache: 'no-cache',
-    //     };
+        for (let i = 0; i < initialKeys.length; i++) {
+            for (let j = 0; j < pal.suitability.length; j++) {
+                if (initialKeys[i].type.toLowerCase() === pal.suitability[j].type.toLowerCase()) {
+                    initialKeys[i].level = pal.suitability[j].level
+                } else {
+                    continue
+                }
+            }
+        }
+        pal.suitability = initialKeys
+        return pal
+    }
 
-    //     try {
-    //         const response = await fetch(this.url, options);
-
-    //         if (!response.ok) {
-    //             throw new Error(`Erro na requisição: ${response.statusText}`);
-    //         }
-
-    //         const data = await response.json();
-    //         console.log('Dados recebidos do servidor: ', data);
-    //         return data ?? [];
-    //     } catch (error) {
-    //         console.error('Erro ao obter dados:', error);
-    //         throw error;
-    //     }
-    // }
+    defaultListPals(pals: Pal[]) {
+        let palsList: Pal[] = [];
+        for (let i = 0; i < pals.length; i++) {
+            let newPal: Pal = this.DefaultValue(pals[i])
+            palsList.push(newPal)
+        }
+        return palsList
+    }
 
 }
